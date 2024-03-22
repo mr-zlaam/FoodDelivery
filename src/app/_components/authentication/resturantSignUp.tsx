@@ -81,7 +81,7 @@ function ResturantSignUp() {
       required: true,
       id: "contact",
       placeholder: " Contact Number ",
-      uid: 5,
+      uid: 7,
     },
   ];
   const handleSignUpForm = (e: React.FormEvent<HTMLFormElement>) => {
@@ -98,9 +98,9 @@ function ResturantSignUp() {
               </label>
               <br />
               <input
-                autoComplete="off"
+                autoComplete="on"
                 required={data?.required}
-                className="outline-none py-2  px-4 rounded-md font-semibold  border-[1px] focus:border-black shadow-black focus:border"
+                className="outline-none py-2  px-4 rounded-md   border-[1px] focus:border-green-700 shadow-black focus:border"
                 type={data.type}
                 name={data.name}
                 id={data.id}
@@ -110,7 +110,7 @@ function ResturantSignUp() {
           ))}
 
           <div className="flex justify-end">
-            <Button variant="animated" className="shadow-sm shadow-black">
+            <Button variant="animated" className="shadow-md w-full">
               Sign Up
             </Button>
           </div>

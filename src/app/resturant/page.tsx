@@ -23,7 +23,7 @@ function ResturantPage() {
             <p className="my-2 text-center">
               Do not have an Account ?{" "}
               <Link
-                className="duration-200 transition-opacity ease-in-out underline hover:opacity-70  hover:no-underline"
+                className="duration-200 text-blue-700 transition-opacity ease-in-out underline hover:opacity-80  hover:no-underline"
                 href="#"
                 onClick={() => setLogin((prev) => !prev)}
               >
@@ -34,7 +34,7 @@ function ResturantPage() {
             <p className="my-2 text-center">
               Already Have an Account ?{" "}
               <Link
-                className="duration-200 transition-opacity ease-in-out underline hover:opacity-70  hover:no-underline"
+                className="duration-200 text-blue-700 transition-opacity ease-in-out underline hover:opacity-80  hover:no-underline"
                 href="#"
                 onClick={() => setLogin((prev) => !prev)}
               >
