@@ -31,7 +31,7 @@ function ResturantLogin() {
             />
           </div>
           <div className="flex justify-end">
-            <Button variant="primary" className="">
+            <Button variant="animated" className="shadow-sm shadow-black">
               Login
             </Button>
           </div>
