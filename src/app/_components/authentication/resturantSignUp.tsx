@@ -1,5 +1,5 @@
 import {} from "react";
-import Button from "../_reuseComp/Button/Button";
+import Button from "../../_reuseComp/Button/Button";
 interface FormTypes {
   label: string;
   labelType: string;
@@ -84,11 +84,13 @@ function ResturantSignUp() {
       uid: 5,
     },
   ];
-
+  const handleSignUpForm = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+  };
   return (
     <>
       <section className="px-6">
-        <form className="w-fit  mx-auto">
+        <form className="w-fit  mx-auto" onSubmit={handleSignUpForm}>
           {formData?.map((data) => (
             <div className="my-2" key={data.uid}>
               <label htmlFor={data.labelType} className="font-semibold">
@@ -96,8 +98,9 @@ function ResturantSignUp() {
               </label>
               <br />
               <input
+                autoComplete="off"
                 required={data?.required}
-                className="outline-none py-2  px-4 rounded-md font-semibold  bg-[#f0f8ff] focus:bg-[#ffffff] focus:shadow-md shadow-black focus:border"
+                className="outline-none py-2  px-4 rounded-md font-semibold  border-[1px] focus:border-black shadow-black focus:border"
                 type={data.type}
                 name={data.name}
                 id={data.id}
@@ -107,13 +110,7 @@ function ResturantSignUp() {
           ))}
 
           <div className="flex justify-end">
-            <Button
-              onClick={(e) => {
-                e.preventDefault();
-              }}
-              variant="animated"
-              className="shadow-sm shadow-black"
-            >
+            <Button variant="animated" className="shadow-sm shadow-black">
               Sign Up
             </Button>
           </div>

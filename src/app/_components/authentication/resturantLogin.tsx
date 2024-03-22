@@ -1,17 +1,21 @@
 import {} from "react";
-import Button from "../_reuseComp/Button/Button";
+import Button from "../../_reuseComp/Button/Button";
 
 function ResturantLogin() {
+  const inputClass =
+    "outline-none py-2  px-4 rounded-md font-semibold  border-[1px] focus:border-black shadow-black focus:border";
   return (
     <>
-      <section className="">
-        <form className="">
+      <section className="px-6 ">
+        <form className="w-fit mx-auto">
           <div className="my-2">
-            <label htmlFor="email">Email</label>
+            <label className="font-semibold" htmlFor="email">
+              Email
+            </label>
             <br />
             <input
               required
-              className="outline-none py-2 px-4 rounded-md font-semibold"
+              className={inputClass}
               type="text"
               name="email"
               id="email"
@@ -19,11 +23,13 @@ function ResturantLogin() {
             />
           </div>
           <div className="my-2">
-            <label htmlFor="password">Password</label>
+            <label className="font-semibold" htmlFor="password">
+              Password
+            </label>
             <br />
             <input
               required
-              className="outline-none py-2 px-4 rounded-md font-semibold"
+              className={inputClass}
               type="password"
               name="password"
               id="password"

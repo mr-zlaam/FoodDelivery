@@ -1,7 +1,7 @@
 "use client";
 import { useState } from "react";
-import ResturantLogin from "../_components/resturantLogin";
-import ResturantSignUp from "../_components/resturantSignUp";
+import ResturantLogin from "../_components/authentication/resturantLogin";
+import ResturantSignUp from "../_components/authentication/resturantSignUp";
 import Link from "next/link";
 
 function ResturantPage() {
@@ -9,7 +9,11 @@ function ResturantPage() {
   return (
     <>
       <section className="min-h-[90vh]  max-w-[500px] my-5 mx-auto ">
-        <div className=" p-5 bg-blue-100 shadow-lg rounded-lg mx-4">
+        <div
+          className={` p-5 bg-white/90 border-black  shadow-lg shadow-black/30 rounded-xl mx-4 ${
+            login && "relative top-28"
+          }`}
+        >
           <h1 className="text-center text-3xl font-bold my-3">
             {login ? "Log in" : "Sign Up"}
           </h1>
