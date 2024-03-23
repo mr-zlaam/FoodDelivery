@@ -3,12 +3,15 @@ import { useState } from "react";
 import ResturantLogin from "../_components/authentication/resturantLogin";
 import ResturantSignUp from "../_components/authentication/resturantSignUp";
 import Link from "next/link";
+import RestaurantHeader from "../_components/headers/RestaurantHeader";
+import RestaurantFooter from "../_components/footer/RestaurantFooter";
 
 function ResturantPage() {
   const [login, setLogin] = useState<boolean>(true);
   return (
     <>
-      <section className="min-h-[90vh]  max-w-[500px] my-5 mx-auto ">
+      <RestaurantHeader />
+      <section className="max-w-[500px] my-5 mx-auto ">
         <div
           className={` p-5 bg-white/90 border-black  shadow-lg shadow-black/30 rounded-xl mx-4 ${
             login && "relative top-28"
