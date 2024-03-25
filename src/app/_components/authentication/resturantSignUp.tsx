@@ -1,4 +1,5 @@
-import {} from "react";
+"use client";
+import { useState } from "react";
 import Button from "../../_reuseComp/Button/Button";
 interface FormTypes {
   label: string;
@@ -84,6 +85,23 @@ function ResturantSignUp() {
       uid: 7,
     },
   ];
+  const [formInputs, setFormInputs] = useState({
+    email: "",
+    password: "",
+    confirmpassword: "",
+    resturantName: "",
+    city: "",
+    adress: "",
+    contact: "",
+  });
+  const inputChanges = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = e.target;
+    setFormInputs((prevInputs) => ({
+      ...prevInputs,
+      [name]: value,
+    }));
+    console.log(value);
+  };
   const handleSignUpForm = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
   };
@@ -105,6 +123,8 @@ function ResturantSignUp() {
                 name={data.name}
                 id={data.id}
                 placeholder={data.placeholder}
+                value={formInputs[data.name as keyof typeof formInputs]}
+                onChange={inputChanges}
               />
             </div>
           ))}
