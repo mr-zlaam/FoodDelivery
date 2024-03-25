@@ -1,0 +1,72 @@
+[
+  {
+    "label": "Email",
+    "labelType": "email",
+    "type": "email",
+    "name": "email",
+    "required": true,
+    "id": "email",
+    "placeholder": "Email",
+    "uid": 1
+  },
+  {
+    "label": "Password",
+    "labelType": "password",
+    "type": "password",
+    "name": "password",
+    "required": true,
+    "id": "password",
+    "placeholder": "Password",
+    "uid": 2
+  },
+  {
+    "label": "Confirm Password",
+    "labelType": "confirmpassword",
+    "type": "password",
+    "name": "confirmpassword",
+    "required": true,
+    "id": "confirmpassword",
+    "placeholder": "Confirm Password",
+    "uid": 3
+  },
+  {
+    "label": "Resturant Name",
+    "labelType": "resturantname",
+    "type": "text",
+    "name": "resturantName",
+    "required": true,
+    "id": "resturantname",
+    "placeholder": " Resturant name",
+    "uid": 4
+  },
+  {
+    "label": "City",
+    "labelType": "city",
+    "type": "text",
+    "name": "city",
+    "required": true,
+    "id": "city",
+    "placeholder": " City ",
+    "uid": 5
+  },
+  {
+    "label": "Adress",
+    "labelType": "adress",
+    "type": "text",
+    "name": "adress",
+    "required": true,
+    "id": "adress",
+    "placeholder": "Adress",
+    "uid": 6
+  },
+  {
+    "label": "Contact",
+    "labelType": "contact",
+    "type": "number",
+    "name": "contact",
+    "required": true,
+    "id": "contact",
+    "placeholder": " Contact Number ",
+    "uid": 7
+  }
+]

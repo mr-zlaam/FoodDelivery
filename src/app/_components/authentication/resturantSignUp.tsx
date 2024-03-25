@@ -1,90 +1,12 @@
 "use client";
 import { useState } from "react";
 import Button from "../../_reuseComp/Button/Button";
-interface FormTypes {
-  label: string;
-  labelType: string;
-  required: boolean;
-  id: string;
-  placeholder: string;
-  name: string;
-  type: "email" | "number" | "text" | "password" | undefined;
-  uid: number;
-}
+import { useMessage } from "@/app/_customHooks/useMessage";
+import formData from "./restaurantData.json";
 
 function ResturantSignUp() {
-  const formData: FormTypes[] = [
-    {
-      label: "Email",
-      labelType: "email",
-      type: "email",
-      name: "email",
-      required: true,
-      id: "email",
-      placeholder: "Email",
-      uid: 1,
-    },
-    {
-      label: "Password",
-      labelType: "password",
-      type: "password",
-      name: "password",
-      required: true,
-      id: "password",
-      placeholder: "Password",
-      uid: 2,
-    },
-    {
-      label: "Confirm Password",
-      labelType: "confirmpassword",
-      type: "password",
-      name: "password",
-      required: true,
-      id: "confirmpassword",
-      placeholder: "Confirm Password",
-      uid: 3,
-    },
-    {
-      label: "Resturant Name",
-      labelType: "resturantname",
-      type: "text",
-      name: "resturantName",
-      required: true,
-      id: "resturantname",
-      placeholder: " Resturant name",
-      uid: 4,
-    },
-    {
-      label: "City",
-      labelType: "city",
-      type: "text",
-      name: "city",
-      required: true,
-      id: "city",
-      placeholder: " City ",
-      uid: 5,
-    },
-    {
-      label: "Adress",
-      labelType: "adress",
-      type: "text",
-      name: "adress",
-      required: true,
-      id: "adress",
-      placeholder: "Adress",
-      uid: 6,
-    },
-    {
-      label: "Contact",
-      labelType: "contact",
-      type: "number",
-      name: "contact",
-      required: true,
-      id: "contact",
-      placeholder: " Contact Number ",
-      uid: 7,
-    },
-  ];
+  const { errorMessage, successMessage } = useMessage();
+
   const [formInputs, setFormInputs] = useState({
     email: "",
     password: "",
@@ -100,10 +22,23 @@ function ResturantSignUp() {
       ...prevInputs,
       [name]: value,
     }));
-    console.log(value);
   };
   const handleSignUpForm = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    if (!formInputs.email) return errorMessage("Email is required");
+    if (!formInputs.password) return errorMessage("Password is required");
+    if (!formInputs.confirmpassword)
+      return errorMessage("Please confirm the password");
+    if (formInputs.password !== formInputs.confirmpassword)
+      return errorMessage("Confirm password must be same as password");
+    if (!formInputs.resturantName)
+      return errorMessage("Restaurant's name is required");
+    if (!formInputs.city) return errorMessage("City is required");
+    if (!formInputs.adress) return errorMessage("Adress is required");
+    if (!formInputs.contact) return errorMessage("Contact is required");
+    if (typeof formInputs.contact !== "number")
+      return errorMessage("Contact must be in number format");
+    console.log("hello clicked");
   };
   return (
     <>
@@ -117,7 +52,6 @@ function ResturantSignUp() {
               <br />
               <input
                 autoComplete="on"
-                required={data?.required}
                 className="outline-none py-2  px-4 rounded-md   border-[1px] focus:border-green-700 shadow-black focus:border"
                 type={data.type}
                 name={data.name}
