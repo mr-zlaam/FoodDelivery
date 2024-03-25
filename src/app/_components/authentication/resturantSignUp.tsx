@@ -3,7 +3,6 @@ import { useState } from "react";
 import Button from "../../_reuseComp/Button/Button";
 import { useMessage } from "@/app/_customHooks/useMessage";
 import formData from "./restaurantData.json";
-
 function ResturantSignUp() {
   const { errorMessage, successMessage } = useMessage();
 
@@ -25,20 +24,28 @@ function ResturantSignUp() {
   };
   const handleSignUpForm = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    if (!formInputs.email) return errorMessage("Email is required");
-    if (!formInputs.password) return errorMessage("Password is required");
-    if (!formInputs.confirmpassword)
-      return errorMessage("Please confirm the password");
-    if (formInputs.password !== formInputs.confirmpassword)
-      return errorMessage("Confirm password must be same as password");
-    if (!formInputs.resturantName)
-      return errorMessage("Restaurant's name is required");
-    if (!formInputs.city) return errorMessage("City is required");
-    if (!formInputs.adress) return errorMessage("Adress is required");
-    if (!formInputs.contact) return errorMessage("Contact is required");
-    if (typeof formInputs.contact !== "number")
-      return errorMessage("Contact must be in number format");
-    console.log("hello clicked");
+    const {
+      email,
+      password,
+      adress,
+      city,
+      confirmpassword,
+      contact,
+      resturantName,
+    } = formInputs;
+    if (
+      !password ||
+      !email ||
+      !confirmpassword ||
+      !adress ||
+      !city ||
+      !contact ||
+      !resturantName
+    ) {
+      return errorMessage("All field are required");
+    } else if (password !== confirmpassword) {
+      return errorMessage("Password do not match !");
+    }
   };
   return (
     <>

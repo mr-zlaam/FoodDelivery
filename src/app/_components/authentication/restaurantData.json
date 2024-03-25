@@ -7,7 +7,8 @@
     "required": true,
     "id": "email",
     "placeholder": "Email",
-    "uid": 1
+    "uid": 1,
+    "displayIcon": false
   },
   {
     "label": "Password",
@@ -17,7 +18,8 @@
     "required": true,
     "id": "password",
     "placeholder": "Password",
-    "uid": 2
+    "uid": 2,
+    "displayIcon": true
   },
   {
     "label": "Confirm Password",
@@ -27,7 +29,8 @@
     "required": true,
     "id": "confirmpassword",
     "placeholder": "Confirm Password",
-    "uid": 3
+    "uid": 3,
+    "displayIcon": true
   },
   {
     "label": "Resturant Name",
@@ -37,7 +40,8 @@
     "required": true,
     "id": "resturantname",
     "placeholder": " Resturant name",
-    "uid": 4
+    "uid": 4,
+    "displayIcon": false
   },
   {
     "label": "City",
@@ -47,7 +51,8 @@
     "required": true,
     "id": "city",
     "placeholder": " City ",
-    "uid": 5
+    "uid": 5,
+    "displayIcon": false
   },
   {
     "label": "Adress",
@@ -57,7 +62,8 @@
     "required": true,
     "id": "adress",
     "placeholder": "Adress",
-    "uid": 6
+    "uid": 6,
+    "displayIcon": false
   },
   {
     "label": "Contact",
@@ -67,6 +73,7 @@
     "required": true,
     "id": "contact",
     "placeholder": " Contact Number ",
-    "uid": 7
+    "uid": 7,
+    "displayIcon": false
   }
 ]

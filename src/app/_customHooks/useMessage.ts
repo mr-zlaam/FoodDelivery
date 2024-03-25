@@ -10,8 +10,7 @@ export const useMessage = () => {
   const errorMessage = (message: string) => {
     toast.error(message, {
       duration: 3000,
-      className: "text-red-500",
-      closeButton: true,
+      className: "text-red-500 select-none",
       position: "top-center",
     });
   };

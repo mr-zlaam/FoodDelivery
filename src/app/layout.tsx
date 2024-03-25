@@ -19,7 +19,7 @@ export default function RootLayout({
     <html lang="en">
       <body className={`bg-[#f0f8ff] ${inter.className}`}>
         {children}
-        <Toaster position="top-right" expand visibleToasts={5} />
+        <Toaster position="top-right" expand visibleToasts={1} />
       </body>
     </html>
   );
