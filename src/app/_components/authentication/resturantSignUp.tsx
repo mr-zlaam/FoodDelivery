@@ -3,6 +3,7 @@ import { useState } from "react";
 import Button from "../../_reuseComp/Button/Button";
 import { useMessage } from "@/app/_customHooks/useMessage";
 import formData from "./restaurantData.json";
+import axios, { AxiosError, isAxiosError } from "axios";
 function ResturantSignUp() {
   const { errorMessage, successMessage } = useMessage();
 
@@ -12,7 +13,7 @@ function ResturantSignUp() {
     confirmpassword: "",
     resturantName: "",
     city: "",
-    adress: "",
+    address: "",
     contact: "",
   });
   const inputChanges = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -22,12 +23,12 @@ function ResturantSignUp() {
       [name]: value,
     }));
   };
-  const handleSignUpForm = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSignUpForm = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const {
       email,
       password,
-      adress,
+      address,
       city,
       confirmpassword,
       contact,
@@ -37,7 +38,7 @@ function ResturantSignUp() {
       !password ||
       !email ||
       !confirmpassword ||
-      !adress ||
+      !address ||
       !city ||
       !contact ||
       !resturantName
@@ -45,6 +46,37 @@ function ResturantSignUp() {
       return errorMessage("All field are required");
     } else if (password !== confirmpassword) {
       return errorMessage("Password do not match !");
+    }
+    try {
+      let result = await axios.post(
+        "http://localhost:3000/api/restaurants",
+        {
+          userEmail: email,
+          password,
+          resturantName,
+          userContact: contact,
+          city,
+          address,
+        },
+        { withCredentials: true }
+      );
+      console.log(result.data);
+    } catch (e) {
+      if (e instanceof Error) {
+        errorMessage(`An error occurred: ${e.message}`);
+      } else if (isAxiosError(e)) {
+        if (e.response) {
+          errorMessage(
+            `Server error: ${e.response.status} - ${e.response.data.message}`
+          );
+        } else if (e.request) {
+          errorMessage("No response received from the server");
+        } else {
+          errorMessage("Error setting up the request");
+        }
+      } else {
+        errorMessage("An unknown error occurred");
+      }
     }
   };
   return (

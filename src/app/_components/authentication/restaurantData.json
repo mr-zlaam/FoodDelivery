@@ -55,13 +55,13 @@
     "displayIcon": false
   },
   {
-    "label": "Adress",
-    "labelType": "adress",
+    "label": "Address",
+    "labelType": "address",
     "type": "text",
-    "name": "adress",
+    "name": "address",
     "required": true,
-    "id": "adress",
-    "placeholder": "Adress",
+    "id": "address",
+    "placeholder": "address",
     "uid": 6,
     "displayIcon": false
   },
