@@ -3,7 +3,7 @@ import { useState } from "react";
 import Button from "../../_reuseComp/Button/Button";
 import { useMessage } from "@/app/_customHooks/useMessage";
 import formData from "./restaurantData.json";
-import axios, { AxiosError, isAxiosError } from "axios";
+import axios, { isAxiosError } from "axios";
 function ResturantSignUp() {
   const { errorMessage, successMessage } = useMessage();
 
@@ -51,16 +51,21 @@ function ResturantSignUp() {
       let result = await axios.post(
         "http://localhost:3000/api/restaurants",
         {
-          userEmail: email,
+          email,
           password,
-          resturantName,
-          userContact: contact,
+          name: resturantName,
+          contact,
           city,
           address,
         },
         { withCredentials: true }
       );
       console.log(result.data);
+      if (!result.data.success) {
+        return errorMessage("Restaurant already registered");
+      } else {
+        successMessage("Restaurant registered successfully");
+      }
     } catch (e) {
       if (e instanceof Error) {
         errorMessage(`An error occurred: ${e.message}`);
