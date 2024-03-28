@@ -24,7 +24,7 @@ function ResturantPage() {
           {login ? <ResturantLogin /> : <ResturantSignUp />}
           {login ? (
             <p className="my-2 text-center">
-              Do not have an Account ?{" "}
+              Do not have an Account ?
               <Link
                 className="duration-200 text-blue-700 transition-opacity ease-in-out underline hover:opacity-80  hover:no-underline"
                 href="#"
