@@ -4,9 +4,11 @@ import Button from "../../_reuseComp/Button/Button";
 import { useMessage } from "@/app/_customHooks/useMessage";
 import formData from "./restaurantData.json";
 import axios, { isAxiosError } from "axios";
+import { useLoading } from "@/app/_customHooks/useLoading";
+import Loader from "@/app/_reuseComp/Loader/Loader";
 function ResturantSignUp() {
   const { errorMessage, successMessage } = useMessage();
-
+  const { isLoading, startLoading, stopLoading } = useLoading();
   const [formInputs, setFormInputs] = useState({
     email: "",
     password: "",
@@ -48,6 +50,7 @@ function ResturantSignUp() {
       return errorMessage("Password do not match !");
     }
     try {
+      startLoading();
       let result = await axios.post(
         "http://localhost:3000/api/restaurants",
         {
@@ -60,7 +63,7 @@ function ResturantSignUp() {
         },
         { withCredentials: true }
       );
-      console.log(result.data);
+      stopLoading();
       if (!result.data.success) {
         return errorMessage("Restaurant already registered");
       } else {
@@ -109,7 +112,7 @@ function ResturantSignUp() {
 
           <div className="flex justify-end">
             <Button variant="animated" className="shadow-md w-full">
-              Sign Up
+              {isLoading ? <Loader /> : " Sign Up"}
             </Button>
           </div>
         </form>
