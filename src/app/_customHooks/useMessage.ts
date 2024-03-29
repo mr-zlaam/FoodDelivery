@@ -5,12 +5,13 @@ export const useMessage = () => {
     toast.success(message, {
       duration: 3000,
       className: "text-green-500",
+      position: "top-center",
     });
   };
   const errorMessage = (message: string) => {
     toast.error(message, {
       duration: 3000,
-      className: "text-red-500 select-none",
+      className: "text-red-600 select-none",
       position: "top-center",
     });
   };

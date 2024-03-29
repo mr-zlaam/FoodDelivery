@@ -66,24 +66,28 @@ function ResturantSignUp() {
       stopLoading();
       if (!result.data.success) {
         return errorMessage("Restaurant already registered");
+        stopLoading();
       } else {
         successMessage("Restaurant registered successfully");
+        stopLoading();
       }
     } catch (e) {
       if (e instanceof Error) {
         errorMessage(`An error occurred: ${e.message}`);
       } else if (isAxiosError(e)) {
         if (e.response) {
-          errorMessage(
-            `Server error: ${e.response.status} - ${e.response.data.message}`
-          );
+          stopLoading();
+          return errorMessage(`Server error:: Internal server error `);
         } else if (e.request) {
-          errorMessage("No response received from the server");
+          stopLoading();
+          return errorMessage("No response received from the server");
         } else {
-          errorMessage("Error setting up the request");
+          stopLoading();
+          return errorMessage("Error setting up the request");
         }
       } else {
-        errorMessage("An unknown error occurred");
+        stopLoading();
+        return errorMessage("An unknown error occurred");
       }
     }
   };
@@ -99,7 +103,7 @@ function ResturantSignUp() {
               <br />
               <input
                 autoComplete="on"
-                className="outline-none py-2  px-4 rounded-md   border-[1px] focus:border-green-700 shadow-black focus:border"
+                className="outline-none py-2  px-4 rounded-md   border-[1px] border-black/30 focus:border-green-700 shadow-black focus:border"
                 type={data.type}
                 name={data.name}
                 id={data.id}
@@ -111,8 +115,14 @@ function ResturantSignUp() {
           ))}
 
           <div className="flex justify-end">
-            <Button variant="animated" className="shadow-md w-full">
-              {isLoading ? <Loader /> : " Sign Up"}
+            <Button
+              disabled={isLoading}
+              variant="animated"
+              className={`shadow-md w-full h-[50px] ${
+                isLoading && "cursor-default"
+              }`}
+            >
+              {isLoading ? <Loader /> : "Sign Up"}
             </Button>
           </div>
         </form>

@@ -3,7 +3,7 @@ import Button from "../../_reuseComp/Button/Button";
 
 function ResturantLogin() {
   const inputClass =
-    "outline-none py-2  px-4 rounded-md   border-[1px] focus:border-black shadow-black focus:border";
+    "outline-none py-2  px-4 rounded-md border-[1px] border-black/30 focus:border-black shadow-black focus:border";
   return (
     <>
       <section className="px-6 ">
