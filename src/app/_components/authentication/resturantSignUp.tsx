@@ -65,7 +65,9 @@ function ResturantSignUp() {
       );
       stopLoading();
       if (!result.data.success) {
-        return errorMessage("Restaurant already registered");
+        return errorMessage(
+          "Restaurant already registered with same  Email ID!"
+        );
         stopLoading();
       } else {
         successMessage("Restaurant registered successfully");
