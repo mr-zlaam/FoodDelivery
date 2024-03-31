@@ -118,7 +118,7 @@ function ResturantSignUp() {
             <Button
               disabled={isLoading}
               variant="animated"
-              className={`shadow-md w-full h-[50px] ${
+              className={` shadow-md w-full h-[50px] ${
                 isLoading && "cursor-default"
               }`}
             >
