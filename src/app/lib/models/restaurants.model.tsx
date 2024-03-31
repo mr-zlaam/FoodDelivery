@@ -11,4 +11,4 @@ const restaurantModelSchema = new mongoose.Schema({
 
 export const restaurantsSchema =
   mongoose.models.restaurants ||
-  mongoose.model("restaurantsSchema", restaurantModelSchema);
+  mongoose.model("restaurants", restaurantModelSchema);
